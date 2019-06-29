@@ -244,20 +244,7 @@ class RestOperationsExtensionsTests {
 				object : ParameterizedTypeReference<List<Foo>>() {})
 	}
 
-	@Test
-	fun `RestOperations are available`() {
-		val extensions = Class.forName("org.springframework.web.client.RestOperationsExtensionsKt")
-		ReflectionUtils.doWithMethods(RestOperations::class.java) { method ->
-			arrayOf(ParameterizedTypeReference::class, Class::class).forEach { kClass ->
-				if (method.parameterTypes.contains(kClass.java)) {
-					val parameters = mutableListOf<Class<*>>(RestOperations::class.java).apply { addAll(method.parameterTypes.filter { it !=  kClass.java }) }
-					val f = extensions.getDeclaredMethod(method.name, *parameters.toTypedArray()).kotlinFunction!!
-					Assert.assertEquals(1, f.typeParameters.size)
-					Assert.assertEquals(listOf(Any::class.createType()), f.typeParameters[0].upperBounds)
-				}
-			}
-		}
-	}
+
 
 	class Foo
 
