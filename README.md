@@ -34,3 +34,6 @@
 # 搭建环境成功
 记录2019-06-29 23:07:00 搭建成功
 > 其实只需要将源码下载下来，用idea自带的，gradle默认试试4.4.1，见gradle-wrapper.properties文件，只需要修改zip那个路径即可编译成功
+
+# 在源码增加中文，编译乱码
+> 增加环境变量在Gradle Vm Options中设置-Dfile.encoding=utf-8。

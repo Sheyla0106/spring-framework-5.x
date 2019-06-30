@@ -7,8 +7,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 /**
  * @Author: sheyla
  * @Date:Create：in 2019/6/29 21:08
- * @Modified By：
- * @Description: 第一类
+ * @Modified By:
+ * @Description: 第一个类
  */
 public class Main {
 	public static void main(String[] args) {
