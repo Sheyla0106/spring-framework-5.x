@@ -64,7 +64,7 @@ public class MutablePropertySources implements PropertySources {
 		}
 	}
 
-	/**
+	/**可变的配置资源
 	 * Create a new {@link MutablePropertySources} object and inherit the given logger,
 	 * usually from an enclosing {@link Environment}.
 	 */

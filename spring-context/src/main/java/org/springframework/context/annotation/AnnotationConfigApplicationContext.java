@@ -51,18 +51,36 @@ import org.springframework.util.Assert;
  * @since 3.0
  */
 public class AnnotationConfigApplicationContext extends GenericApplicationContext implements AnnotationConfigRegistry {
-
+	//创建一个读取注解的Bean定义读取器，并将其设置到容器中
 	private final AnnotatedBeanDefinitionReader reader;
-
+	//创建一个扫描指定类路径中注解Bean定义的扫描器，并将其设置到容器中
 	private final ClassPathBeanDefinitionScanner scanner;
 
 
 	/**
 	 * Create a new AnnotationConfigApplicationContext that needs to be populated
 	 * through {@link #register} calls and then manually {@linkplain #refresh refreshed}.
+	 * 创建一个注解配置应用上下文，需要填充信息，通过register调用和手工刷新方法
+	 * <p>
+	 * //AnnotatedBeanDefinitionReader是一个读取注解的Bean读取器，这里将this传了进去。
+	 * //从上面这个构造函数可以顺便提一句：如果你仅仅是这样ApplicationContext applicationContext = new AnnotationConfigApplicationContext()
+	 * // 容器是不会启动的（也就是不会执行refresh()的），这时候需要自己之后再手动启动容器
+	 * <p>
+	 * this=AnnotationConfigApplicationContext
+	 * 此时属性:
+	 * beanFactory=DefaultListableBeanFactory
+	 * customClassLoader=false
+	 * refreshed="false" AtomicBoolean
+	 * beanFactoryPostProcessors=0个
+	 * active=false
+	 * closed=false
+	 * resourcePatternResolver=PathMatchingResourcePattternResolver
+	 * classLoader=Launcher$AppClassLoader
 	 */
 	public AnnotationConfigApplicationContext() {
+		//读取器
 		this.reader = new AnnotatedBeanDefinitionReader(this);
+		//扫描器
 		this.scanner = new ClassPathBeanDefinitionScanner(this);
 	}
 
@@ -80,17 +98,19 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	/**
 	 * Create a new AnnotationConfigApplicationContext, deriving bean definitions
 	 * from the given annotated classes and automatically refreshing the context.
+	 * annotatedClasses=传入的配置我自己定义的Appconfig
+	 * <p>
+	 * <p>
+	 * 创建一个通过注解配置的应用上下文，获取beandefinition信息，从给定的注解的类，自动刷新上下文
 	 *
 	 * @param annotatedClasses one or more annotated classes,
-	 *                         e.g. {@link Configuration @Configuration} classes
-	 *                         <p>
-	 *                         <p>
-	 *                         <p>sheyla备注
-	 *                         annotatedClasses=传入的配置我自己定义的Appconfig
+	 *                         e.g. {@link Configuration @Configuration} classes *
 	 */
 	public AnnotationConfigApplicationContext(Class<?>... annotatedClasses) {
 		this();
+		// 把该配置类（们）注册进来
 		register(annotatedClasses);
+		//核心刷新方法【重要】
 		refresh();
 	}
 
@@ -155,6 +175,8 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 * Register one or more annotated classes to be processed.
 	 * <p>Note that {@link #refresh()} must be called in order for the context
 	 * to fully process the new classes.
+	 * <p>
+	 * 一个或多个被Configuration注解的类对象被处理的时候，一定要调用refresh方法，上下文能够增加新的类
 	 *
 	 * @param annotatedClasses one or more annotated classes,
 	 *                         e.g. {@link Configuration @Configuration} classes
@@ -170,6 +192,8 @@ public class AnnotationConfigApplicationContext extends GenericApplicationContex
 	 * Perform a scan within the specified base packages.
 	 * <p>Note that {@link #refresh()} must be called in order for the context
 	 * to fully process the new classes.
+	 * 在指定的包文件下执行扫描
+	 * 必须调用refresh方法，为了上下文能完全处理新的类
 	 *
 	 * @param basePackages the packages to check for annotated classes
 	 * @see #register(Class...)

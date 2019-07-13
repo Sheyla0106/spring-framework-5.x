@@ -41,7 +41,7 @@ public interface ConfigurationCondition extends Condition {
 	enum ConfigurationPhase {
 
 		/**
-		 * The {@link Condition} should be evaluated as a {@code @Configuration}
+		 * The {@link Condition} should be evaluated as a {@code @5}
 		 * class is being parsed.
 		 * <p>If the condition does not match at this point, the {@code @Configuration}
 		 * class will not be added.

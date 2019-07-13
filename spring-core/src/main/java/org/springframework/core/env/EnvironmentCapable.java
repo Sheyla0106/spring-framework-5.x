@@ -33,15 +33,16 @@ package org.springframework.core.env;
  * a ConfigurableApplicationContext, at which point it too may be configured.
  *
  * @author Chris Beams
- * @since 3.1
  * @see Environment
  * @see ConfigurableEnvironment
  * @see org.springframework.context.ConfigurableApplicationContext#getEnvironment()
+ * @since 3.1 环境能力
  */
 public interface EnvironmentCapable {
 
 	/**
 	 * Return the {@link Environment} associated with this component.
+	 * 返回组件关联的环境信息
 	 */
 	Environment getEnvironment();
 

@@ -22,18 +22,22 @@ import org.springframework.util.Assert;
 /**
  * Describes scope characteristics for a Spring-managed bean including the scope
  * name and the scoped-proxy behavior.
- *
+ * 为spring管理的bean描述scope属性
+ * 包含scope的名字，默认为单例singleton
+ * 和scopedProxyMode代理模式 默认为NO，不需要创建代理
  * <p>The default scope is "singleton", and the default is to <i>not</i> create
  * scoped-proxies.
  *
  * @author Mark Fisher
  * @author Juergen Hoeller
- * @since 2.5
  * @see ScopeMetadataResolver
  * @see ScopedProxyMode
+ * @since 2.5
+ * ScopeMetadata就是对Scope注解的描述转换,
+ * 以Metadata结尾命名的表示对元数据(注解)的描述
  */
 public class ScopeMetadata {
-
+	//默认的scope="singleton"单例
 	private String scopeName = BeanDefinition.SCOPE_SINGLETON;
 
 	private ScopedProxyMode scopedProxyMode = ScopedProxyMode.NO;
