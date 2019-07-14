@@ -37,7 +37,8 @@ import java.io.InputStream;
  * This class parses a byte array conforming to the Java class file format and
  * calls the appropriate visit methods of a given class visitor for each field,
  * method and bytecode instruction encountered.
- * 
+ * 一个java类解析器，让ClassVisitor可以访问一个已经存在的类，这个类（java解析器）解析一个字节数组
+ * 符合java的类文件形式，调用合适的访问方法（指定的类访问类）为每一个属性、方法、字节码码 遇到指令
  * @author Eric Bruneton
  * @author Eugene Kuleshov
  */

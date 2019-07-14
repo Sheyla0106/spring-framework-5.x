@@ -49,15 +49,14 @@ final class SimpleMetadataReader implements MetadataReader {
 
 	SimpleMetadataReader(Resource resource, @Nullable ClassLoader classLoader) throws IOException {
 		InputStream is = new BufferedInputStream(resource.getInputStream());
+		//ASM 技术生成修修改二进制文件
 		ClassReader classReader;
 		try {
 			classReader = new ClassReader(is);
-		}
-		catch (IllegalArgumentException ex) {
+		} catch (IllegalArgumentException ex) {
 			throw new NestedIOException("ASM ClassReader failed to parse class file - " +
 					"probably due to a new Java class file version that isn't supported yet: " + resource, ex);
-		}
-		finally {
+		} finally {
 			is.close();
 		}
 

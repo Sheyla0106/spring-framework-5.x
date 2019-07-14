@@ -24,10 +24,10 @@ package org.springframework.core.type;
  * @author Mark Pollack
  * @author Chris Beams
  * @author Phillip Webb
- * @since 3.0
  * @see StandardMethodMetadata
  * @see AnnotationMetadata#getAnnotatedMethods
  * @see AnnotatedTypeMetadata
+ * @since 3.0
  */
 public interface MethodMetadata extends AnnotatedTypeMetadata {
 
@@ -38,11 +38,14 @@ public interface MethodMetadata extends AnnotatedTypeMetadata {
 
 	/**
 	 * Return the fully-qualified name of the class that declares this method.
+	 * 返回定义方法的  类的完全限定名
 	 */
 	String getDeclaringClassName();
 
 	/**
 	 * Return the fully-qualified name of this method's declared return type.
+	 * 返回方法返回值得，完全限定名
+	 *
 	 * @since 4.2
 	 */
 	String getReturnTypeName();
@@ -51,6 +54,7 @@ public interface MethodMetadata extends AnnotatedTypeMetadata {
 	 * Return whether the underlying method is effectively abstract:
 	 * i.e. marked as abstract on a class or declared as a regular,
 	 * non-default method in an interface.
+	 *
 	 * @since 4.2
 	 */
 	boolean isAbstract();
@@ -62,6 +66,7 @@ public interface MethodMetadata extends AnnotatedTypeMetadata {
 
 	/**
 	 * Return whether the underlying method is marked as 'final'.
+	 * 底层方法
 	 */
 	boolean isFinal();
 
