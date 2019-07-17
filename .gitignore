@@ -41,3 +41,4 @@ atlassian-ide-plugin.xml
 gradlew
 gradlew.bat
 gradlew
+*.bat
